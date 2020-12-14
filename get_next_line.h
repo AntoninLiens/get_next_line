@@ -6,11 +6,15 @@
 /*   By: aliens <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/13 12:24:03 by aliens            #+#    #+#             */
-/*   Updated: 2020/12/13 16:07:19 by aliens           ###   ########.fr       */
+/*   Updated: 2020/12/14 14:48:39 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
+
+# include <unistd.h>
+
+int		get_next_line(int fd, char **line);
 
 #endif
