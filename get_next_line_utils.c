@@ -6,7 +6,7 @@
 /*   By: aliens <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 16:13:32 by aliens            #+#    #+#             */
-/*   Updated: 2020/12/14 16:25:21 by aliens           ###   ########.fr       */
+/*   Updated: 2020/12/18 10:41:02 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ size_t	ft_strlen(const char *a)
 {
 	size_t	i;
 
+	if (!a)
+		return (0);
 	i = 0;
 	while (a[i])
 		i++;
@@ -44,4 +46,15 @@ void	*ft_calloc(size_t count, size_t size)
 		return (NULL);
 	ft_bzero(dst, (count * size));
 	return (dst);
+}
+
+void	ft_bzero(void *s, size_t n)
+{
+	char *ptr;
+
+	ptr = (char *)s;
+	if (n == 0)
+		return ;
+	while (n--)
+		ptr[n] = 0;
 }
