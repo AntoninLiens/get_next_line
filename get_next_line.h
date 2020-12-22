@@ -6,7 +6,7 @@
 /*   By: aliens <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/13 12:24:03 by aliens            #+#    #+#             */
-/*   Updated: 2020/12/16 13:43:30 by aliens           ###   ########.fr       */
+/*   Updated: 2020/12/22 15:56:19 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <limits.h>
 
 int		get_next_line(int fd, char **line);
 char	*ft_line(char *str);
