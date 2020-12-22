@@ -6,11 +6,24 @@
 /*   By: aliens <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 16:13:32 by aliens            #+#    #+#             */
-/*   Updated: 2020/12/18 10:41:02 by aliens           ###   ########.fr       */
+/*   Updated: 2020/12/22 16:47:44 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+char	*ft_strdup(const char *s1)
+{
+	char	*str;
+	size_t	i;
+
+	i = -1;
+	if (!(str = (char *)ft_calloc(sizeof(char), ft_strlen(s1) + 1)))
+		return (NULL);
+	while (s1[++i])
+		str[i] = s1[i];
+	return (str);
+}
 
 size_t	ft_strlen(const char *a)
 {

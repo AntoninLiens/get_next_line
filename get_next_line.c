@@ -6,24 +6,11 @@
 /*   By: aliens <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/13 12:33:38 by aliens            #+#    #+#             */
-/*   Updated: 2020/12/22 16:18:49 by aliens           ###   ########.fr       */
+/*   Updated: 2020/12/22 16:47:02 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-char	*ft_strdup(const char *s1)
-{
-	char	*str;
-	size_t	i;
-
-	i = -1;
-	if (!(str = (char *)ft_calloc(sizeof(char), ft_strlen(s1) + 1)))
-		return (NULL);
-	while (s1[++i])
-		str[i] = s1[i];
-	return (str);
-}
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
