@@ -6,7 +6,7 @@
 /*   By: aliens <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/13 12:33:38 by aliens            #+#    #+#             */
-/*   Updated: 2020/12/23 18:23:39 by aliens           ###   ########.fr       */
+/*   Updated: 2020/12/23 18:27:33 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,11 +95,11 @@ int		get_next_line(int fd, char **line)
 			return (-1);
 		}
 		buf[reader] = 0;
-		save[fd] = ft_strjoin(save, buf);
+		save = ft_strjoin(save, buf);
 	}
 	free(buf);
 	*line = ft_line(save);
-	save[fd] = ft_save(save);
+	save = ft_save(save);
 	if (reader)
 		return (1);
 	return (0);
