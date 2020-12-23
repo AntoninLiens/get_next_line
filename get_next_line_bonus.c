@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aliens <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/13 12:33:38 by aliens            #+#    #+#             */
-/*   Updated: 2020/12/23 18:23:39 by aliens           ###   ########.fr       */
+/*   Created: 2020/12/23 18:24:03 by aliens            #+#    #+#             */
+/*   Updated: 2020/12/23 18:24:07 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
@@ -79,7 +79,7 @@ int		ft_end_line(char *str)
 
 int		get_next_line(int fd, char **line)
 {
-	static char	*save;
+	static char	*save[OPEN_MAX];
 	char		*buf;
 	int			reader;
 
@@ -87,7 +87,7 @@ int		get_next_line(int fd, char **line)
 			!(buf = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1)))
 		return (-1);
 	reader = 1;
-	while (!ft_end_line(save) && reader)
+	while (!ft_end_line(save[fd]) && reader)
 	{
 		if ((reader = (int)read(fd, buf, BUFFER_SIZE)) < 0)
 		{
@@ -95,11 +95,11 @@ int		get_next_line(int fd, char **line)
 			return (-1);
 		}
 		buf[reader] = 0;
-		save[fd] = ft_strjoin(save, buf);
+		save[fd] = ft_strjoin(save[fd], buf);
 	}
 	free(buf);
-	*line = ft_line(save);
-	save[fd] = ft_save(save);
+	*line = ft_line(save[fd]);
+	save[fd] = ft_save(save[fd]);
 	if (reader)
 		return (1);
 	return (0);
