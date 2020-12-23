@@ -6,7 +6,7 @@
 /*   By: aliens <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/13 12:24:03 by aliens            #+#    #+#             */
-/*   Updated: 2020/12/22 16:48:19 by aliens           ###   ########.fr       */
+/*   Updated: 2020/12/23 16:20:55 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 # define GET_NEXT_LINE_H
 
 # include <unistd.h>
+# include <sys/types.h>
+# include <sys/uio.h>
+# include <fcntl.h>
 # include <stdlib.h>
 # include <limits.h>
 
 int		get_next_line(int fd, char **line);
 int		ft_end_line(char *str);
-char	*ft_save(const char *str, char c);
+char	*ft_save(const char *str);
 char	*ft_line(char *str);
 char	*ft_strjoin(char const *s1, char const *s2);
 

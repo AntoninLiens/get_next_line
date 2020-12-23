@@ -6,7 +6,7 @@
 /*   By: aliens <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/13 12:33:38 by aliens            #+#    #+#             */
-/*   Updated: 2020/12/22 16:47:02 by aliens           ###   ########.fr       */
+/*   Updated: 2020/12/23 16:31:02 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (dst);
 }
 
-char	*ft_save(const char *str, char c)
+char	*ft_save(const char *str)
 {
 	size_t	i;
 	char	*dst;
@@ -39,7 +39,7 @@ char	*ft_save(const char *str, char c)
 		return (0);
 	i = -1;
 	while (str[++i])
-		if (str[i] == c)
+		if (str[i] == '\n')
 		{
 			dst = ft_strdup(str + i + 1);
 			free((void *)str);
@@ -80,12 +80,13 @@ int		ft_end_line(char *str)
 int		get_next_line(int fd, char **line)
 {
 	static char	*save[OPEN_MAX];
-	size_t		reader;
 	char		*buf;
+	int			reader;
 
-	if (fd < 0 || fd > OPEN_MAX || BUFFER_SIZE < 1 || !line ||
-			!(buf = (char *)ft_calloc(sizeof(char), BUFFER_SIZE + 1)))
+	if (fd < 0 || fd > OPEN_MAX || !line || BUFFER_SIZE < 1 ||
+			!(buf = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1)))
 		return (-1);
+	reader = 1;
 	while (!ft_end_line(save[fd]) && reader)
 	{
 		if ((reader = (int)read(fd, buf, BUFFER_SIZE)) < 0)
@@ -93,11 +94,12 @@ int		get_next_line(int fd, char **line)
 			free(buf);
 			return (-1);
 		}
+		buf[reader] = 0;
 		save[fd] = ft_strjoin(save[fd], buf);
 	}
 	free(buf);
 	*line = ft_line(save[fd]);
-	save[fd] = ft_save(save[fd], '\n');
+	save[fd] = ft_save(save[fd]);
 	if (reader)
 		return (1);
 	return (0);
