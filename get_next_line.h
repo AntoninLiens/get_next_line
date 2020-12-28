@@ -6,7 +6,7 @@
 /*   By: aliens <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/13 12:24:03 by aliens            #+#    #+#             */
-/*   Updated: 2020/12/23 16:20:55 by aliens           ###   ########.fr       */
+/*   Updated: 2020/12/28 15:22:41 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ int		get_next_line(int fd, char **line);
 int		ft_end_line(char *str);
 char	*ft_save(const char *str);
 char	*ft_line(char *str);
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_error(int fd, char **line); 
 
 size_t	ft_strlen(const char *a);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 void	*ft_calloc(size_t count, size_t size);
-void	ft_bzero(void *s, size_t n);
 char	*ft_strdup(const char *s1);
+char	*ft_strjoin(char const *s1, char const *s2);
 
 #endif
