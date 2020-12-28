@@ -6,7 +6,7 @@
 /*   By: aliens <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/13 12:33:38 by aliens            #+#    #+#             */
-/*   Updated: 2020/12/28 15:04:08 by aliens           ###   ########.fr       */
+/*   Updated: 2020/12/28 15:06:22 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,14 +71,14 @@ int		ft_end_line(char *str)
 
 int		get_next_line(int fd, char **line)
 {
-	static char	*save;
+	static char	*save[fd];
 	char		*buf;
 	int			reader;
 
 	if (!(buf = ft_error(fd, line)))
 		return (-1);
 	reader = 1;
-	while (!ft_end_line(save) && reader)
+	while (!ft_end_line(save[fd]) && reader)
 	{
 		if ((reader = (int)read(fd, buf, BUFFER_SIZE)) < 0)
 		{
@@ -86,12 +86,12 @@ int		get_next_line(int fd, char **line)
 			return (-1);
 		}
 		buf[reader] = 0;
-		if (!(save = ft_strjoin(save, buf)))
+		if (!(save[fd] = ft_strjoin(save[fd], buf)))
 			return (-1);
 	}
 	free(buf);
-	if (!(*line = ft_line(save)) ||
-			(!(save = ft_save(save)) && reader != 0))
+	if (!(*line = ft_line(save[fd])) ||
+			(!(save[fd] = ft_save(save[fd])) && reader != 0))
 		return (-1);
 	if (reader)
 		return (1);
