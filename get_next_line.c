@@ -6,28 +6,20 @@
 /*   By: aliens <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/13 12:33:38 by aliens            #+#    #+#             */
-/*   Updated: 2020/12/23 18:27:33 by aliens           ###   ########.fr       */
+/*   Updated: 2020/12/28 14:34:25 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char		*ft_error(int fd, char **line)
 {
-	char	*dst;
-	size_t	s;
+	char	*buf;
 
-	s = ft_strlen(s1) + ft_strlen(s2) + 1;
-	if (!(dst = (char *)ft_calloc(sizeof(char), s)))
-	{
-		if (s1)
-			free((void *)s1);
-		return (NULL);
-	}
-	ft_memcpy(dst, s1, ft_strlen(s1));
-	ft_memcpy(dst + ft_strlen(s1), s2, ft_strlen(s2));
-	free((void *)s1);
-	return (dst);
+	if (fd < 0 || fd > OPEN_MAX || !line || BUFFER_SIZE < 1 ||
+			!(buf = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1)))
+		return (0);
+	return (buf);
 }
 
 char	*ft_save(const char *str)
@@ -83,8 +75,7 @@ int		get_next_line(int fd, char **line)
 	char		*buf;
 	int			reader;
 
-	if (fd < 0 || fd > OPEN_MAX || !line || BUFFER_SIZE < 1 ||
-			!(buf = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1)))
+	if (!(buf = ft_error(fd, line)))
 		return (-1);
 	reader = 1;
 	while (!ft_end_line(save) && reader)
@@ -95,11 +86,13 @@ int		get_next_line(int fd, char **line)
 			return (-1);
 		}
 		buf[reader] = 0;
-		save = ft_strjoin(save, buf);
+		if (!(save = ft_strjoin(save, buf)))
+			return (-1);
 	}
 	free(buf);
-	*line = ft_line(save);
-	save = ft_save(save);
+	if (!(*line = ft_line(save)) ||
+			(!(save = ft_save(save)) && reader != 0))
+		return (-1);
 	if (reader)
 		return (1);
 	return (0);

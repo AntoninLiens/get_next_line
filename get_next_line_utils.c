@@ -6,7 +6,7 @@
 /*   By: aliens <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 16:13:32 by aliens            #+#    #+#             */
-/*   Updated: 2020/12/22 16:47:44 by aliens           ###   ########.fr       */
+/*   Updated: 2020/12/28 14:45:35 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,21 +53,31 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	void	*dst;
+	char	*dst;
+	size_t	i;
 
-	if (!(dst = malloc(sizeof(char) * (size * count))))
+	if (!(dst = (char *)malloc(sizeof(char) * (size * count))))
 		return (NULL);
-	ft_bzero(dst, (count * size));
+	i = -1;
+	while (++i < size * count)
+		dst[i] = 0;
 	return (dst);
 }
 
-void	ft_bzero(void *s, size_t n)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char *ptr;
+	char	*dst;
+	size_t	s;
 
-	ptr = (char *)s;
-	if (n == 0)
-		return ;
-	while (n--)
-		ptr[n] = 0;
+	s = ft_strlen(s1) + ft_strlen(s2) + 1;
+	if (!(dst = (char *)ft_calloc(sizeof(char), s)))
+	{
+		if (s1)
+			free((void *)s1);
+		return (NULL);
+	}
+	ft_memcpy(dst, s1, ft_strlen(s1));
+	ft_memcpy(dst + ft_strlen(s1), s2, ft_strlen(s2));
+	free((void *)s1);
+	return (dst);
 }
