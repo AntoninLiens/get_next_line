@@ -6,7 +6,7 @@
 /*   By: aliens <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/13 12:33:38 by aliens            #+#    #+#             */
-/*   Updated: 2020/12/28 15:06:22 by aliens           ###   ########.fr       */
+/*   Updated: 2020/12/28 15:08:03 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int		ft_end_line(char *str)
 
 int		get_next_line(int fd, char **line)
 {
-	static char	*save[fd];
+	static char	*save[OPEN_MAX];
 	char		*buf;
 	int			reader;
 
