@@ -74,6 +74,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	{
 		if (s1)
 			free((void *)s1);
+		free((void *)s2);
 		return (NULL);
 	}
 	ft_memcpy(dst, s1, ft_strlen(s1));
