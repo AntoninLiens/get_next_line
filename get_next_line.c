@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliens <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: aliens <aliens@students.s19.be>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/13 12:33:38 by aliens            #+#    #+#             */
-/*   Updated: 2020/12/28 15:04:08 by aliens           ###   ########.fr       */
+/*   Updated: 2021/02/02 15:50:57 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char		*ft_error(int fd, char **line)
+char	*ft_error(int fd, char **line)
 {
 	char	*buf;
 
@@ -49,7 +49,7 @@ char	*ft_line(char *str)
 	s = 0;
 	while (str[s] && str[s] != '\n')
 		s++;
-	if (!(dst = ft_calloc(sizeof(char), s + 1)))
+	if (!(dst = (char *)ft_calloc(sizeof(char), s + 1)))
 		return (NULL);
 	while (s--)
 		dst[s] = str[s];

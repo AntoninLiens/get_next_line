@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliens <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: aliens <aliens@students.s19.be>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/13 12:24:03 by aliens            #+#    #+#             */
-/*   Updated: 2020/12/28 15:22:41 by aliens           ###   ########.fr       */
+/*   Updated: 2021/02/02 15:51:09 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		get_next_line(int fd, char **line);
 int		ft_end_line(char *str);
 char	*ft_save(const char *str);
 char	*ft_line(char *str);
-char	*ft_error(int fd, char **line); 
+char	*ft_error(int fd, char **line);
 
 size_t	ft_strlen(const char *a);
 void	*ft_memcpy(void *dst, const void *src, size_t n);

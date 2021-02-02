@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliens <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: aliens <aliens@students.s19.be>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 14:55:52 by aliens            #+#    #+#             */
-/*   Updated: 2021/01/05 14:55:58 by aliens           ###   ########.fr       */
+/*   Updated: 2021/02/02 15:51:36 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # include <unistd.h>
 # include <sys/types.h>
